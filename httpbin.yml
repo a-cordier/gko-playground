@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpbin
+  labels:
+    type: httpbin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: httpbin
+  template:
+    metadata:
+      labels:
+        type: httpbin
+    spec:
+      containers:
+        - name: httpbin
+          image: mccutchen/go-httpbin
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "256m"
+            limits:
+              memory: "256Mi"
+              cpu: "256m"
+          env:
+            - name: USE_REAL_HOSTNAME
+              value: "true"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpbin
+  labels:
+    type: httpbin
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    type: httpbin

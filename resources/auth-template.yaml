@@ -1,0 +1,5 @@
+# TODO 
+## copy the content of echo-auth.yaml to this file 
+## change the name of the resource and the API to auth-template
+## add `gravitee.io/template: "true"` as an annotation (in the metadata section)
+## add `gravitee.io/template: auth-template` as an annotation in httpbin-ingress.yaml

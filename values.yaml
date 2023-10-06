@@ -1,0 +1,35 @@
+api:
+  enabled: false
+
+portal:
+  enabled: false
+
+ui:
+  enabled: false
+
+es:
+  enabled: false
+
+gateway:
+  replicaCount: 1
+  autoscaling:
+    enabled: false
+  ingress:
+    enabled: false
+  image:
+    repository: graviteeio/apim-gateway
+    tag: 4.1
+  service:
+    type: NodePort
+    nodePort: 30002
+  services:
+    sync:
+      kubernetes:
+        enabled: true
+  dbLess: true
+  reporters:
+    elasticsearch:
+      enabled: false
+  additionalPlugins:
+  - https://download.gravitee.io/graviteeio-apim/plugins/resources/gravitee-resource-auth-provider-inline/gravitee-resource-auth-provider-inline-1.3.0.zip
+  - https://download.gravitee.io/graviteeio-apim/plugins/policies/gravitee-policy-basic-authentication/gravitee-policy-basic-authentication-1.5.1.zip

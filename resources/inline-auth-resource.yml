@@ -1,0 +1,12 @@
+apiVersion: gravitee.io/v1alpha1
+kind: ApiResource
+metadata:
+  name: resource-inline-auth-provider
+# TODO
+# copy the content of the resource in echo-auth in the spec section
+# update the resource content of echo-auth to
+# resources:
+# - ref:
+#     name: resource-inline-auth-provider
+#     namespace: gravitee
+# You can then try and create another API with the same resource reference

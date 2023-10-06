@@ -1,0 +1,24 @@
+apiVersion: gravitee.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: echo-master
+spec:
+  contextRef:
+    # TODO replace with the name of your management context
+    name: changeme
+    namespace: gravitee
+  name: "echo-context"
+  version: "1.0"
+  description: "echo API"
+  plans:
+    - name: "KEY_LESS"
+      description: "FREE"
+      security: "KEY_LESS"
+  proxy:
+    virtual_hosts:
+      # You might want to change this as it needs to be unique on the target APIM environment.
+      - path: "/echo-context"
+    groups:
+      - endpoints:
+          - name: "Default"
+            target: "https://api.gravitee.io/echo"

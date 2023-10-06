@@ -1,0 +1,44 @@
+---
+apiVersion: "gravitee.io/v1alpha1"
+kind: "ApiDefinition"
+metadata:
+    name: "echo-auth"
+    annotations: {}
+spec:
+    name: "echo-auth"
+    version: "1"
+    description: "echo with basic authentication"
+    resources:
+    - name: "inline-auth"
+      type: "auth-provider-inline-resource"
+      enabled: true
+      configuration:
+        users:
+        - username: "user"
+          password: "password"
+    plans:
+        - name: "free"
+          description: "Free Plan"
+          security: "KEY_LESS"
+    proxy:
+      virtual_hosts:
+        - path: "/echo-auth"
+      groups:
+        - name: "default-group"
+          endpoints:
+              - name: "default"
+                target: "https://api.gravitee.io/echo"
+    flows:
+      - name: "common"
+        enabled: true
+        path-operator:
+            path: "/"
+            operator: "STARTS_WITH"
+        pre:
+        - name: "Basic Authentication"
+          enabled: true
+          policy: "policy-basic-authentication"
+          configuration:
+            authenticationProviders:
+            - "inline-auth"
+            realm: "gravitee.io"
