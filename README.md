@@ -37,6 +37,12 @@ helm upgrade --install --create-namespace -n gravitee gko graviteeio/gko --set m
 
 ```sh
 kubectl apply -f httpbin.yml
+
+
+## 👷‍♀️ Enter the gravitee namespace
+
+```sh
+kubectl config set-context --current --namespace gravitee
 ```
 
 ## 🧪 Creating a simple API
