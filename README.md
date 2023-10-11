@@ -22,6 +22,7 @@ kind create cluster --config kind.yaml
 ## 👷‍♀️ Deploy APIM
 
 ```sh
+helm repo add graviteeio https://helm.gravitee.io
 helm repo update graviteeio
 helm upgrade --install --create-namespace -n gravitee apim graviteeio/apim -f values.yaml
 ```
@@ -29,7 +30,7 @@ helm upgrade --install --create-namespace -n gravitee apim graviteeio/apim -f va
 ## 👷‍♀️ Deploy the operator
 
 ```sh
-helm upgrade --install --create-namespace -n gravitee gko graviteeio/gko --set manager.logs.json=false
+helm upgrade --install --create-namespace -n gravitee gko graviteeio/gko --set manager.logs.json=false --set manager.scope.cluster=false
 ```
 
 ## 👷‍♀️ Add httpbin to your namespace
