@@ -25,7 +25,7 @@ gateway:
   services:
     sync:
       kubernetes:
-        enabled: true
+        enabled: false
   dbLess: true
   reporters:
     elasticsearch:

@@ -7,6 +7,12 @@
   - [helm](https://helm.sh/docs/intro/install/)
   - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 
+## Resources
+
+  - [GKO CRD documentation](https://documentation.gravitee.io/apim/guides/gravitee-kubernetes-operator/custom-resource-definitions)
+  - [API Reference](https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/alpha/docs/api/reference.md)
+  - [Helm Reference](https://github.com/gravitee-io/gravitee-kubernetes-operator/blob/alpha/helm/gko/README.md)
+
 ## 👷‍♀️ Start a kind cluster
 
 ```sh
